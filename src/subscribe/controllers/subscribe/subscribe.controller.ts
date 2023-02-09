@@ -10,11 +10,7 @@ export class SubscribeController {
 
 
     @Post()
-    createSubscriber(@Body() subscriberDetails: CreateSubscriberDto){
-        var email = subscriberDetails.email;
-        console.log("controller email:"+email);
-
-        this.subscribeService.saveSubscriber(email);
-        return "end of createSubscriber";
+    async createSubscriber(@Body() subscriberDetails: CreateSubscriberDto){
+        return await this.subscribeService.saveSubscriber(subscriberDetails);
     }
 }
