@@ -8,9 +8,13 @@ export class SubscribeController {
         private readonly subscribeService: SubscribeService
     ){}
 
+    @Post('useinbox')
+    async createSubscriberUIB(@Body() subscriberDetails: CreateSubscriberDto){
+        return await this.subscribeService.saveSubscriberUIBX(subscriberDetails);
+    }
 
-    @Post()
-    async createSubscriber(@Body() subscriberDetails: CreateSubscriberDto){
-        return await this.subscribeService.saveSubscriber(subscriberDetails);
+    @Post('mailchimp')
+    async createSubscriberMCP(@Body() subscriberDetails: CreateSubscriberDto){
+        return await this.subscribeService.saveSubscriberMCP(subscriberDetails);
     }
 }
